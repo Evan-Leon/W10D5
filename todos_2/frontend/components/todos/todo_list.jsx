@@ -2,6 +2,10 @@ import React from "react";
 import TodoListItem from './todo_list_item';
 
 class TodoList extends React.Component {
+
+    uniqueId() {
+        return new Date().getTime();
+      }
     
     render(){
         const { todos, receiveTodo } = this.props;
@@ -17,6 +21,7 @@ class TodoList extends React.Component {
                <ul className="todo-list">
                     { todoItems }
                </ul>
+               <TodoForm receiveTodo={receiveTodo} />
             </div>
         )
     }
