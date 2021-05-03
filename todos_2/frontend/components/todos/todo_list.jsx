@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import TodoListItem from './todo_list_item';
 
 class TodoList extends React.Component {
     
