@@ -1,17 +1,26 @@
-import { connect } from 'react-redux';
-import TodoList from './todo_list.jsx';
-import  allTodos  from '../../reducers/selectors.js'
+import React from "react";
+import { render } from "react-dom";
 
-const mapStateToProps = state => ({
-    todos: allTodos(state),
-})
+class TodoList extends React.Component {
+    
+    render(){
+        const { todos, receiveTodo } = this.props;
+        const todoItems = todos.map(todo => {
+            <TodoListItem
+                key = {`todo-list-item ${todo.id}`}
+                todo = {todo}
+                receiveTodo = {receiveTodo} />
+        
+        })
+        return(
+            <div>
+               <ul className="todo-list">
+                    { todoItems }
+               </ul>
+            </div>
+        )
+    }
+}
+    
 
-const mapDispatchToProps = dispatch => ({
-    receiveTodo: todo => dispatch(receiveTodo(todo))
-})
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TodoList);
+export default TodoList;
